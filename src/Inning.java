@@ -3,9 +3,9 @@
  */
 public class Inning {
 
-    public  static final String ANSI_WHITE_BACKGROUND = "\u001B[47m";
-    public  static final String ANSI_BLACK = "\u001B[30m";
-    public  static final String ANSI_RESET = "\u001B[0m";
+    final String ANSI_WHITE_BACKGROUND = "\u001B[47m";
+    final String ANSI_BLACK = "\u001B[30m";
+    final String ANSI_RESET = "\u001B[0m";
 
     public void playHalfInning(Team team) {
         int outs = 0;
