@@ -5,8 +5,8 @@ public class Main {
 
     public static void main(String[] args) {
         //create team objects (name, home status, score
-        Team team1 = new Team("Dolphins", true, 0);
-        Team team2 = new Team("Salmons", false, 0);
+        Team team1 = new Team("Dolphins", false, 0);
+        Team team2 = new Team("Salmons", true, 0);
 
         //assign players to team 1 object
         team1.players.add(new Player("Baseball jones"));

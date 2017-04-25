@@ -20,42 +20,53 @@ public class BaseballGame {
 
     public void play() {
 
-        int inning = 1;
+        int inningCounter = 8;
         boolean gameTied = false;
 
         do {
-            System.out.print(ANSI_WHITE_BACKGROUND + ANSI_BLACK + "[Inning # " + inning + " - " + team1.teamName + ": "
+            System.out.print(ANSI_WHITE_BACKGROUND + ANSI_BLACK + "[Inning # " + inningCounter + " - " + team1.teamName + ": "
                     + team1.score + " " + team2.teamName + ": " + team2.score + "] " + ANSI_RESET);
-            playInning();
+            playInning(inningCounter);
             if (team1.score == team2.score) {
                 gameTied = true;
             } else {
                 gameTied = false;
             }
-            inning++;
+            inningCounter++;
 
-        } while ((inning < 10 || gameTied));
+        } while ((inningCounter < 10 || (inningCounter == 10 && gameTied)));
 
         if (team1.score > team2.score) {
             System.out.println(ANSI_WHITE_BACKGROUND + ANSI_BLACK + "[" + team1.teamName +
                     " win the game! Final score: " + team1.score + " to " + team2.score + "]" + ANSI_RESET);
-        } else {
+        } else if (team1.score < team2.score){
+            System.out.println(ANSI_WHITE_BACKGROUND + ANSI_BLACK + "[" + team2.teamName +
+                    " win the game! Final score: " + team2.score + " to " + team1.score + "]" + ANSI_RESET);
+        } else if (team1.score == team2.score){
             System.out.println(ANSI_WHITE_BACKGROUND + ANSI_BLACK + "[" + team2.teamName +
                     " win the game! Final score: " + team2.score + " to " + team1.score + "]" + ANSI_RESET);
         }
     }
 
-    public void playInning() {
+    public void playInning(int inningCounter) {
         //create a new inning object
         Inning inning = new Inning();
 
         //each team plays an inning
         if (team1.home) {
-            inning.playHalfInning(team1);
             inning.playHalfInning(team2);
+            if ((inningCounter ==9) && (team2.score < team1.score)){
+                //do nothing here, game ends early
+            } else {
+                inning.playHalfInning(team1);
+            }
         } else {
-            inning.playHalfInning(team2);
             inning.playHalfInning(team1);
+            if ((inningCounter ==9) && (team1.score < team2.score)){
+                //do nothing here, game ends early
+            } else {
+                inning.playHalfInning(team2);
+            }
         }
     }
 }
