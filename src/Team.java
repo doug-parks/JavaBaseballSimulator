@@ -19,23 +19,16 @@ public class Team {
         this.batterIndex = batterIndex;
     }
 
-    int batterIndex = 0;
+    int batterIndex = 0; //used to pull a batter from the next spot in the array
 
-    public Player getPlayer(int position) {
-        return players.get(position);
-    }
+    ArrayList<Player> players = new ArrayList<Player>();  //creates an ArrayList for storing players
 
-    //creates an ArrayList for storing players
-    ArrayList<Player> players = new ArrayList<Player>();
-
-    public Player getNextBatter() {
+    public Player getNextBatter() { //this method is used to pull a batter from the roster.
         if (this.batterIndex >= this.players.size()) {
-            this.batterIndex = 0;
+            this.batterIndex = 0; //goes back to the front of the line when it reaches the end
         }
         Player newBatter = this.players.get(this.batterIndex);
         this.batterIndex++;
         return newBatter;
     }
-
-
 }

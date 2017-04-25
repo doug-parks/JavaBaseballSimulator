@@ -33,4 +33,10 @@ public class Player {
         return 0;
     }
 
+    public static int randomOut(){
+        Random random = new Random();
+        int outType = random.nextInt(4);
+        return outType;
+    }
+
 }

@@ -3,15 +3,11 @@
  */
 public class Field {
 
-    public static final String ANSI_RED = "\u001B[31m";
-    public static final String ANSI_BLACK = "\u001B[30m";
-    public static final String ANSI_GREEN = "\u001B[32m";
-    public static final String ANSI_YELLOW = "\u001B[33m";
-    public static final String ANSI_BLUE = "\u001B[34m";
-    public static final String ANSI_PURPLE = "\u001B[35m";
-    public static final String ANSI_CYAN = "\u001B[36m";
-    public static final String ANSI_WHITE = "\u001B[37m";
-    public static final String ANSI_RESET = "\u001B[0m";
+    private static final String ANSI_RED = "\u001B[31m";
+    private static final String ANSI_GREEN = "\u001B[32m";
+    private static final String ANSI_BLUE = "\u001B[34m";
+    private static final String ANSI_WHITE = "\u001B[37m";
+    private static final String ANSI_RESET = "\u001B[0m";
 
     Player[] bases = new Player[4];
 
@@ -34,21 +30,21 @@ public class Field {
     }
 
     private boolean manOnFirst() {
-        if (bases[1] != null) return true;
+        if (bases[1] != null) return true; //returns true if there is a batter on first
         else return false;
     }
 
-    private boolean manOnSecond() {
+    private boolean manOnSecond() { //returns true if there is a batter on second
         if (bases[2] != null) return true;
         else return false;
     }
 
-    private boolean manOnThird() {
+    private boolean manOnThird() { //returns true if there is a batter on third
         if (bases[3] != null) return true;
         else return false;
     }
 
-    public void baseUpdateSingle(Team team, Player player) {
+    public void baseUpdateSingle(Team team, Player player) { //shifts the players around the bases for a single
         System.out.println("and hits a single!");
 
         if (manOnThird()) {
@@ -69,7 +65,7 @@ public class Field {
         System.out.println("\t\t" + bases[1].getPlayerName() + " sprints to first base");
     }
 
-    public void baseUpdateDouble(Team team, Player player) {
+    public void baseUpdateDouble(Team team, Player player) { //shifts the players around the bases for a double
         System.out.println("and hits a double!");
 
         if (manOnThird()) {
@@ -90,7 +86,7 @@ public class Field {
 
     }
 
-    public void baseUpdateTriple(Team team, Player player) {
+    public void baseUpdateTriple(Team team, Player player) { //shifts the players around the bases for a triple
         System.out.println("and hits a triple!");
 
         if (manOnThird()) {
@@ -109,9 +105,9 @@ public class Field {
         System.out.println("\t\t" + bases[3].getPlayerName() + " sprints to third base");
     }
 
-    public void baseUpdateHomeRun(Team team, Player player) {
-        System.out.println("and hits a " +
-                ANSI_RED + " H " +
+    public void baseUpdateHomeRun(Team team, Player player) { //shifts the players around the bases for a homerun
+        System.out.println("and hits a... " + //generates some red/white/blue text in the console cuz AMERICA
+                ANSI_RED + "\n\t\tH " +
                 ANSI_WHITE + " O " +
                 ANSI_BLUE + " M " +
                 ANSI_RED + " E " +
@@ -136,7 +132,7 @@ public class Field {
         playerScored(player.getPlayerName(), team, player);
     }
 
-    public void playerScored(String scoringPlayer, Team team, Player player) {
+    public void playerScored(String scoringPlayer, Team team, Player player) { //generates text when a player scores
         System.out.println("\t\t" + scoringPlayer + " sprints home! \n" + "\t\t" + ANSI_GREEN + team.teamName
                 + " have scored!" + ANSI_RESET);
         team.score++;
