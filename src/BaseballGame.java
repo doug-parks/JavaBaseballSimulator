@@ -8,9 +8,9 @@ public class BaseballGame {
     Team team1;
     Team team2;
 
-    private static final String ANSI_WHITE_BACKGROUND = "\u001B[47m";
-    private static final String ANSI_BLACK = "\u001B[30m";
-    private static final String ANSI_RESET = "\u001B[0m";
+    public  static final String ANSI_WHITE_BACKGROUND = "\u001B[47m";
+    public  static final String ANSI_BLACK = "\u001B[30m";
+    public  static final String ANSI_RESET = "\u001B[0m";
 
 
     public BaseballGame(Team team1, Team team2) {
@@ -38,10 +38,10 @@ public class BaseballGame {
 
         if (team1.score > team2.score) {
             System.out.println(ANSI_WHITE_BACKGROUND + ANSI_BLACK + "[" + team1.teamName +
-                    " win the game! Final score: " + team1.score + " to " + team2.score + "]");
+                    " win the game! Final score: " + team1.score + " to " + team2.score + "]" + ANSI_RESET);
         } else {
             System.out.println(ANSI_WHITE_BACKGROUND + ANSI_BLACK + "[" + team2.teamName +
-                    " win the game! Final score: " + team2.score + " to " + team1.score + "]");
+                    " win the game! Final score: " + team2.score + " to " + team1.score + "]" + ANSI_RESET);
         }
     }
 
@@ -50,7 +50,12 @@ public class BaseballGame {
         Inning inning = new Inning();
 
         //each team plays an inning
-        inning.playHalfInning(team1);
-        inning.playHalfInning(team2);
+        if (team1.home) {
+            inning.playHalfInning(team1);
+            inning.playHalfInning(team2);
+        } else {
+            inning.playHalfInning(team2);
+            inning.playHalfInning(team1);
+        }
     }
 }

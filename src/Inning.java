@@ -3,9 +3,9 @@
  */
 public class Inning {
 
-    private static final String ANSI_WHITE_BACKGROUND = "\u001B[47m";
-    private static final String ANSI_BLACK = "\u001B[30m";
-    private static final String ANSI_RESET = "\u001B[0m";
+    public  static final String ANSI_WHITE_BACKGROUND = "\u001B[47m";
+    public  static final String ANSI_BLACK = "\u001B[30m";
+    public  static final String ANSI_RESET = "\u001B[0m";
 
     public void playHalfInning(Team team) {
         int outs = 0;
@@ -25,7 +25,9 @@ public class Inning {
                 field.runToBase(team, player, hit);
             } else {
                 int outType = player.randomOut();
-                if (outType == 1){
+                if (outType == 0){
+                    System.out.println("and gets tagged out at first!");
+                } else if (outType == 1){
                     System.out.println("and gets struck out!");
                 } else if (outType == 2){
                     System.out.println("and hits a ground out!");
