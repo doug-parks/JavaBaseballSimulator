@@ -20,7 +20,7 @@ public class BaseballGame {
 
     public void play() {
 
-        int inningCounter = 8;
+        int inningCounter = 1;
         boolean gameTied = false;
 
         do {
